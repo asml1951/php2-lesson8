@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for novel in novels %}
+        <a href="/novels/{{ novel.id }}">{{ novel.name }}</a><br>
+    {% endfor %}
+
+
+{% endblock %}

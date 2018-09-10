@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ name }}{% endblock %}
+{% block page_title %}{{ name }}{{ year  }}
+{% endblock %}
+
+{% block body %}{{ text | raw }} {% endblock %}

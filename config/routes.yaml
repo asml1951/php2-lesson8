@@ -1,0 +1,24 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+#byography:
+#    path: /byography
+#    controller: App\Controller\DefaultController::index
+
+#poems:
+#    path: /poems
+#    controller: App\Controller\DefaultController::index
+
+#text_of_poems:
+#    path: /poems/{id}
+#    controller: App\Controller\PoemsController::show
+
+#novels:
+#    path: /novels
+#    controller: App\Controller\NovelsController::index
+
+#films:
+#    path: /films
+#    controller: App\Controller\FilmsController::index
+
