@@ -17,6 +17,7 @@ class PoemsController extends DefaultController
     public function index($_route )
     {
         $url = $this->generateUrl($_route);
+
         $page = $this->getDoctrine()
             ->getRepository(Pages::class)
             ->findOneBy(['url' => $url]);
@@ -33,7 +34,6 @@ class PoemsController extends DefaultController
      */
     public function show($id)
     {
-
         $work = $this->getDoctrine()
             ->getRepository(Work::class)
             ->find($id);

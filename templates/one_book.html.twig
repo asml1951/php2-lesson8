@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  <h2> {{ book.name }} </h2>
+    <h3>Год издания {{ book.IssueDate|date("d/m/Y") }} </h3>
+    <ul>
+        {% for work in works %}
+            <li> {{ work.name }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

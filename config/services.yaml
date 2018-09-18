@@ -40,3 +40,10 @@ services:
             tags:
                 - { name: 'sonata.admin', manager_type: 'orm', label: 'Страницы сайта' }
             public: true
+
+    admin.books:
+                class: 'App\Admin\BooksAdmin'
+                arguments: [~, App\Entity\Books, ~]
+                tags:
+                    - { name: 'sonata.admin', manager_type: 'orm', label: 'Книги' }
+                public: true

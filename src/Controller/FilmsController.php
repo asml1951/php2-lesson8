@@ -19,18 +19,12 @@ class FilmsController extends DefaultController
     /**
      * @Route("/films",name="films")
      */
-
-    public function index($id = 5)
+    public function index($_route)
     {
+        $url = $this->generateUrl($_route);
         $page = $this->getDoctrine()
             ->getRepository(Pages::class)
-            ->find($id);
-
-        if (!$page) {
-            throw $this->createNotFoundException(
-                'No content found for id '.$id
-            );
-        }
+            ->findOneBy(['url' => $url]);
 
         return $this->render('base.html.twig', ['content' => $page->getContent(),
             'title' => $page->getTitle(),'menu' => $this->getMenu(),]);

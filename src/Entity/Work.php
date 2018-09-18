@@ -3,8 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Класс Work представляет произведения Пушкина
+ */
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WorkRepository")
  */
@@ -39,9 +43,15 @@ class Work
 
     private $works;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Books", mappedBy="work_id")
+     */
+    private $book_id;
+
     public function __construct()
     {
         $this->works = new ArrayCollection();
+        $this->book_id = new ArrayCollection();
     }
 
     public function getWorks()
@@ -98,6 +108,34 @@ class Work
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Books[]
+     */
+    public function getBookId(): Collection
+    {
+        return $this->book_id;
+    }
+
+    public function addBookId(Books $bookId): self
+    {
+        if (!$this->book_id->contains($bookId)) {
+            $this->book_id[] = $bookId;
+            $bookId->addWorkId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBookId(Books $bookId): self
+    {
+        if ($this->book_id->contains($bookId)) {
+            $this->book_id->removeElement($bookId);
+            $bookId->removeWorkId($this);
+        }
 
         return $this;
     }

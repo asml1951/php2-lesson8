@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>{{ content }}</div>
+    {% for book in books %}
+        <a href="/books/{{ book.id }}">{{ book.name }}</a><br>
+    {% endfor %}
+
+
+{% endblock %}

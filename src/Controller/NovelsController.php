@@ -3,8 +3,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Books;
 use App\Entity\Pages;
 use App\Entity\Work;
+use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,17 +34,17 @@ class NovelsController extends DefaultController
     }
 
     /**
-     * @Route("/novels/{id}",name="novel_text")
+     * @Route("/novels/{id}",name="novel_content")
      */
     public function show($id)
     {
-
         $work = $this->getDoctrine()
             ->getRepository(Work::class)
             ->find($id);
 
         return $this->render('poem.html.twig', ['text' => $work->getText(),
-            'name' => $work->getName(),'year' => $work->getYear(),'menu' => $this->getMenu(),]);
+            'name' => $work->getName(),'year' => $work->getYear(),
+            'menu' => $this->getMenu(),]);
 
 
     }

@@ -5,6 +5,10 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Класс Pages представляет страницы сайта
+ */
+
+/**
  * @ORM\Entity(repositoryClass="App\Repository\PagesRepository")
  */
 class Pages
